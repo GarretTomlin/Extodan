@@ -1,9 +1,5 @@
 package lexer
 
-import (
-	"fmt"
-	"regexp"
-)
 
 // Token types
 const (
