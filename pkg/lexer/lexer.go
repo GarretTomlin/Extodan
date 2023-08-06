@@ -12,6 +12,20 @@ type Lexer struct {
 	currentToken Token
 }
 
+// KeywordMap maps keywords to their corresponding token types.
+var KeywordMap = map[string]string{
+    "func":   TokenKeyword,
+    "do":     TokenKeyword,
+    "end":    TokenKeyword,
+    "return": TokenKeyword,
+    "fn":     TokenKeyword,
+    "endfunc": TokenKeyword,
+    "when":   TokenKeyword,
+    "else":   TokenKeyword,
+    "if":     TokenKeyword,
+}
+
+
 // NewLexer creates a new Lexer with the input source code.
 func NewLexer(input string) *Lexer {
 	// Remove any leading and trailing spaces from the input source code
@@ -40,7 +54,6 @@ func (l *Lexer) readNextToken() {
 	punctuationRegex := regexp.MustCompile(`^(\(|\)|,|\{|}|\[|\]|;|\.)`)
 	commentRegex := regexp.MustCompile(`^#.*$`)
 	spaceRegex := regexp.MustCompile(`^\s+`)
-	keywordsRegex := regexp.MustCompile(`\b(func|do|end|func|return)\b`)
 
 	newlineRegex := regexp.MustCompile(`^\r?\n`)
 
@@ -54,8 +67,8 @@ func (l *Lexer) readNextToken() {
 			// Check for different token patterns
 			if matches := identifierRegex.FindString(l.input[l.position:]); matches != "" {
 				// Check if the identifier is a keyword
-				if keywordsRegex.MatchString(strings.ToLower(matches)) {
-					l.currentToken = Token{Type: TokenKeyword, Value: matches}
+				if tokenType, isKeyword := KeywordMap[strings.ToLower(matches)]; isKeyword {
+					l.currentToken = Token{Type: tokenType, Value: matches}
 				} else {
 					l.currentToken = Token{Type: TokenIdentifier, Value: matches}
 				}

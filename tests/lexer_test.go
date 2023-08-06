@@ -1,4 +1,4 @@
-package lexer_test
+package tests
 
 import (
 	"fmt"
@@ -30,7 +30,7 @@ end`
 		{Type: lexer.TokenOperator, Value: "+"},
 		{Type: lexer.TokenIdentifier, Value: "b"},
 		{Type: lexer.TokenKeyword, Value: "end"},
-		{Type: lexer.TokenEOF, Value: ""}, // Expect an EOF token at the end
+		{Type: lexer.TokenEOF, Value: ""}, 
 	}
 
 	l := lexer.NewLexer(sourceCode)
