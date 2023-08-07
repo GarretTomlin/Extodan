@@ -67,6 +67,7 @@ func checkNumber(number) do
         return "Zero"
     end
 endfunc
+```
 
 
  The (`when`) keyword is used for pattern matching with guards
@@ -80,7 +81,7 @@ func checkType(x) do
         _ -> return "Unknown Type"
     end
 endfunc
-
+```
 ### Concurrency
 Extodan supports lightweight concurrency with goroutines, similar to Golang. Goroutines are created using the go keyword.
 
@@ -92,6 +93,7 @@ func printNumbers() do
         end
     end
 endfunc
+```
 
 ### Functions
 
@@ -116,6 +118,7 @@ func divide(a, b) do
         return error
     end
 endfunc
+```
 
 ### Pipe Operator
 Extodan incorporates the pipe operator |> from Elixir, which allows for a more readable and expressive code flow.
@@ -127,6 +130,7 @@ func processNumber(number) do
     |> subtract(3)
     |> checkNumber
 end
+```
 
 
 

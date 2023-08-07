@@ -7,11 +7,12 @@ on:
     branches: [ "main" ]
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: ['1.19', '1.20']
+        go-version: ['1.17', '1.18', '1.19', '1.20']
     steps:
     - uses: actions/checkout@v3
 
@@ -19,7 +20,6 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: ${{ matrix.go-version }}
-      id: go
 
     - name: Cache Go dependencies
       uses: actions/cache@v2
@@ -33,16 +33,9 @@ jobs:
     - name: Install golangci-lint
       run: curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.42.1
 
-    - name: Set up goimports
-      run: |
-        go get golang.org/x/tools/cmd/goimports@latest
-        echo "export PATH=\${PATH}:\$(go env GOPATH)/bin" >> $GITHUB_ENV
-
     - name: Lint
       run: golangci-lint run
 
-    - name: Format Go code with goimports
-      run: goimports -w .
-
     - name: Test
       run: go test -v ./...
+
