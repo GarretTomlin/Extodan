@@ -22,6 +22,7 @@ Extodan is a programming language that blends the best features of Elixir and Go
     - [Error Handling](#error-handling)
     - [Pipe Operator](#pipe-operator)
     - [Keywords](#keywords)
+    - [Conclusion](#conclusion)
 
 ## Introduction
 
@@ -216,5 +217,5 @@ end
 The Extodan language has several reserved keywords with special meanings, including `func`, `do`, `end`, and `var`.
 
 
-
+### Conclusion 
 This specification aims to provide a comprehensive overview of the Extodan programming language, enabling developers to understand and use the language effectively for various applications.
