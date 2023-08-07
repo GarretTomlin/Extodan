@@ -41,7 +41,13 @@ Identifiers in Extodan are sequences of letters, digits, and underscores. They m
 
 ### Variables
 
-Variables in Extodan are declared using the 'var' keyword. The type of a variable is automatically inferred from the assigned value.
+Variables in Extodan are declared using the (`var`) keyword. The type of a variable is automatically inferred from the assigned value.
+
+```go
+var age = 30
+var name = "Garret Tomlin"
+var isTrue = true
+```
 
 ### Data Types
 
