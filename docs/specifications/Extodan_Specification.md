@@ -16,7 +16,9 @@ Extodan is a programming language that blends the best features of Elixir and Go
     - [Control Flow](#control-flow)
     - [Concurrency](#concurrency)
     - [Functions](#functions)
-    - [Variables](#variables-1)
+    - [Modules](#modules)
+    - [Creating a Module](#creating-a-module)
+    - [Example: Creating a MathOperations Module](#example-creating-a-mathoperations-module)
     - [Error Handling](#error-handling)
     - [Pipe Operator](#pipe-operator)
     - [Keywords](#keywords)
@@ -104,10 +106,57 @@ endfunc
 ### Functions
 
 Functions are defined using the `func` keyword, followed by the function name, parameters, and the `do` keyword to start the function body.
+```elixir
 
-### Variables
+  func add(a, b) do
+        return a + b
+    endfunc
+```
 
-Variables in Extodan are declared using the `var` keyword. The type of a variable is automatically inferred from the assigned value.
+### Modules
+
+In Extodan, a module is a self-contained unit that encapsulates related functions, data, and logic. It allows you to organize your code into logical sections, making it easier to manage and maintain. Modules provide a way to group related functionality together, promoting modularity and code reusability.
+
+### Creating a Module
+
+To create a module in Extodan, you use the `module` keyword followed by the module name and the `do` keyword to start the module body. Inside the module body, you can define functions, variables, and other constructs that are relevant to the module's purpose.
+
+Here's the syntax for creating a module:
+
+```elixir
+module ModuleName do
+    # Functions, variables, and other code related to the module
+endmodule
+```
+
+### Example: Creating a MathOperations Module
+Let's create a MathOperations module that encapsulates functions for basic arithmetic operations:
+
+```elixir
+module MathOperations do
+
+    # Function to add two numbers
+    func add(a, b) do
+        return a + b
+    endfunc
+    
+    # Function to subtract two numbers
+    func subtract(a, b) do
+        return a - b
+    endfunc
+    
+    # Function to multiply two numbers
+    func multiply(a, b) do
+        return a * b
+    endfunc
+    
+    # Function to divide two numbers
+    func divide(a, b) do
+        return a / b
+    endfunc
+    
+endmodule
+```
 
 
 ### Error Handling
