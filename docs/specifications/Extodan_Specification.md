@@ -129,6 +129,7 @@ module ModuleName do
 endmodule
 ```
 
+
 ### Example: Creating a MathOperations Module
 Let's create a MathOperations module that encapsulates functions for basic arithmetic operations:
 
@@ -156,6 +157,27 @@ module MathOperations do
     endfunc
     
 endmodule
+```
+
+Using a Module
+Once you've defined a module, you can use its functions and other elements by referencing the module's name followed by the function or variable name. This helps maintain a clear separation of concerns and avoids naming conflicts.
+
+Here's an example of how to use the (`MathOperations`) module:
+
+```elixir
+func main() do
+    var result = MathOperations.add(5, 3)
+    print("Addition result:", result)
+    
+    result = MathOperations.subtract(10, 4)
+    print("Subtraction result:", result)
+    
+    result = MathOperations.multiply(6, 7)
+    print("Multiplication result:", result)
+    
+    result = MathOperations.divide(15, 3)
+    print("Division result:", result)
+endfunc
 ```
 
 
@@ -192,6 +214,7 @@ end
 ### Keywords
 
 The Extodan language has several reserved keywords with special meanings, including `func`, `do`, `end`, and `var`.
+
 
 
 This specification aims to provide a comprehensive overview of the Extodan programming language, enabling developers to understand and use the language effectively for various applications.
