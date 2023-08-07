@@ -1,6 +1,6 @@
 # Extodan Language Specification
 
-Extodan is a programming language that blends the best features of Elixir and Go. It is designed to be concise, expressive, and performant, making it suitable for a wide range of applications.
+Extodan is a programming language that blends the best features of Elixir and Go. It is designed to be concise, expressive, and performant, making it suitable for a wide range of applications
 
 ## Table of Contents
 
