@@ -1,9 +1,9 @@
 package parser
 
 import (
+	"extodan/pkg/lexer"
 	"fmt"
 	"strconv"
-	"extodan/pkg/lexer"
 )
 
 // Parser holds the lexer and the current token.
