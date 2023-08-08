@@ -17,4 +17,5 @@ const (
 type Token struct {
 	Type  string
 	Value string
+	Position SourcePosition
 }

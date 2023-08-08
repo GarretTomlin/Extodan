@@ -12,6 +12,11 @@ type Lexer struct {
 	currentToken Token
 }
 
+type SourcePosition struct {
+	Line   int
+	Column int
+}
+
 // KeywordMap maps keywords to their corresponding token types.
 var KeywordMap = map[string]string{
     "func":   TokenKeyword,
