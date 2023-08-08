@@ -4,17 +4,14 @@ import (
 	"extodan/pkg/lexer"
 )
 
-// Parser holds the lexer and the current token.
 type Parser struct {
-	lexer  *lexer.Lexer
-	errors []string
+	lexer *lexer.Lexer
 }
 
-// NewParser creates a new Parser with the provided Lexer.
-func NewParser(l *lexer.Lexer) *Parser {
+func NewParser(lexer *lexer.Lexer) *Parser {
 	return &Parser{
-		lexer:  l,
-		errors: make([]string, 0),
+		lexer: lexer,
 	}
 }
+
 
