@@ -11,7 +11,7 @@ import (
 func TestLexer(t *testing.T) {
 	sourceCode := `func add(a, b) do
 	return a + b
-end`
+endfunc`
 
 	// Remove any leading and trailing spaces from the sourceCode
 	sourceCode = strings.TrimSpace(sourceCode)
@@ -29,8 +29,8 @@ end`
 		{Type: lexer.TokenIdentifier, Value: "a"},
 		{Type: lexer.TokenOperator, Value: "+"},
 		{Type: lexer.TokenIdentifier, Value: "b"},
-		{Type: lexer.TokenKeyword, Value: "end"},
-		{Type: lexer.TokenEOF, Value: ""}, 
+		{Type: lexer.TokenKeyword, Value: "endfunc"},
+		{Type: lexer.TokenEOF, Value: ""},
 	}
 
 	l := lexer.NewLexer(sourceCode)

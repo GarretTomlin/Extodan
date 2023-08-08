@@ -2,4 +2,4 @@
 
 func main() do
     print("Hello, World!")
-end
+endfunc
