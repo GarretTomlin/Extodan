@@ -12,8 +12,8 @@ type SourcePosition struct {
 
 // ExtodanError represents a generic error in the Extodan language.
 type ExtodanError struct {
-    Message   string         // A human-readable error message.
-    Position  SourcePosition // The position in the source code where the error occurred.
+    Message   string         
+    Position  SourcePosition 
 }
 
 func (e ExtodanError) Error() string {
@@ -48,7 +48,7 @@ type SemanticError struct {
 // IOValidationError represents an error related to I/O validation.
 type IOValidationError struct {
     ExtodanError
-    Path string // The path associated with the I/O validation error.
+    Path string 
 }
 
 // NewSourcePosition creates a new SourcePosition instance.

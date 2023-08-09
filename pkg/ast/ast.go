@@ -4,16 +4,15 @@ package ast
 type NodeType string
 
 const (
-	NodeProgram              NodeType = "Program"              // Represents the root node of the AST.
-	NodeFunctionDeclaration NodeType = "FunctionDeclaration" // Represents a function declaration node.
-	NodeParameter           NodeType = "Parameter"           // Represents a parameter node.
-	NodeReturnStatement     NodeType = "ReturnStatement"     // Represents a return statement node.
-	NodeExpression          NodeType = "Expression"          // Represents an expression node.
-	NodeTerm                NodeType = "Term"                // Represents a term node.
-	NodeOperator            NodeType = "Operator"            // Represents an operator node.
-	NodeIdentifier          NodeType = "Identifier"          // Represents an identifier node.
-	NodeInteger             NodeType = "Integer"             // Represents an integer node.
-)
+	NodeProgram              NodeType = "Program"              
+	NodeFunctionDeclaration NodeType = "FunctionDeclaration" 
+	NodeParameter           NodeType = "Parameter"           
+	NodeReturnStatement     NodeType = "ReturnStatement"     
+	NodeExpression          NodeType = "Expression"          
+	NodeTerm                NodeType = "Term"               
+	NodeOperator            NodeType = "Operator"            
+	NodeIdentifier          NodeType = "Identifier"         
+	NodeInteger             NodeType = "Integer"            
 
 // Node represents a node in the Abstract Syntax Tree (AST).
 type Node struct {
