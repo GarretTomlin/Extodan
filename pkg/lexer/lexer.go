@@ -12,6 +12,7 @@ type Lexer struct {
 	currentToken Token
 }
 
+// SourcePosition represents a position in the source code.
 type SourcePosition struct {
 	Line   int
 	Column int
@@ -30,8 +31,7 @@ var KeywordMap = map[string]string{
     "if":     TokenKeyword,
 }
 
-
-// NewLexer creates a new Lexer with the input source code.
+// NewLexer creates a new Lexer instance with the input source code.
 func NewLexer(input string) *Lexer {
 	// Remove any leading and trailing spaces from the input source code
 	input = strings.TrimSpace(input)
@@ -59,7 +59,6 @@ func (l *Lexer) readNextToken() {
 	punctuationRegex := regexp.MustCompile(`^(\(|\)|,|\{|}|\[|\]|;|\.)`)
 	commentRegex := regexp.MustCompile(`^#.*$`)
 	spaceRegex := regexp.MustCompile(`^\s+`)
-
 	newlineRegex := regexp.MustCompile(`^\r?\n`)
 
 	for !l.isEOF() {

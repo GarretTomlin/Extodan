@@ -9,6 +9,7 @@ import (
 )
 
 func TestLexer(t *testing.T) {
+	// Sample source code to be tokenized
 	sourceCode := `func add(a, b) do
 	return a + b
 end`
@@ -16,6 +17,7 @@ end`
 	// Remove any leading and trailing spaces from the sourceCode
 	sourceCode = strings.TrimSpace(sourceCode)
 
+	// Define the expected tokens for the given source code
 	expectedTokens := []lexer.Token{
 		{Type: lexer.TokenKeyword, Value: "func"},
 		{Type: lexer.TokenIdentifier, Value: "add"},
@@ -30,11 +32,13 @@ end`
 		{Type: lexer.TokenOperator, Value: "+"},
 		{Type: lexer.TokenIdentifier, Value: "b"},
 		{Type: lexer.TokenKeyword, Value: "end"},
-		{Type: lexer.TokenEOF, Value: ""}, 
+		{Type: lexer.TokenEOF, Value: ""},
 	}
 
+	// Create a new lexer instance using the provided source code
 	l := lexer.NewLexer(sourceCode)
 
+	// Iterate through the expected tokens and compare with actual tokens
 	for i, expectedToken := range expectedTokens {
 		token := l.GetNextToken()
 		fmt.Printf("Expected: %s: %s, Got: %s: %s\n", expectedToken.Type, expectedToken.Value, token.Type, token.Value)
@@ -43,6 +47,7 @@ end`
 		}
 	}
 
+	// Check if lexer correctly identifies the end of the input
 	if !l.IsEOF() {
 		t.Errorf("Expected end of input, got %s: %s", l.CurrentToken().Type, l.CurrentToken().Value)
 	}

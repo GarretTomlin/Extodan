@@ -12,8 +12,8 @@ type SourcePosition struct {
 
 // ExtodanError represents a generic error in the Extodan language.
 type ExtodanError struct {
-    Message string
-    Position SourcePosition
+    Message   string         // A human-readable error message.
+    Position  SourcePosition // The position in the source code where the error occurred.
 }
 
 func (e ExtodanError) Error() string {
@@ -28,7 +28,7 @@ type ParsingError struct {
 // UnexpectedTokenError represents an error for unexpected tokens.
 type UnexpectedTokenError struct {
     ExtodanError
-    Token string
+    Token string // The unexpected token encountered.
 }
 
 func (e UnexpectedTokenError) Error() string {
@@ -48,24 +48,22 @@ type SemanticError struct {
 // IOValidationError represents an error related to I/O validation.
 type IOValidationError struct {
     ExtodanError
-    Path string
+    Path string // The path associated with the I/O validation error.
 }
 
-
-// NewSourcePosition creates a SourcePosition instance.
+// NewSourcePosition creates a new SourcePosition instance.
 func NewSourcePosition(line, column int) SourcePosition {
     return SourcePosition{Line: line, Column: column}
 }
 
-
-// CreateParsingError creates a ParsingError instance with the provided message, line, and column.
+// CreateParsingError creates a new ParsingError instance with the provided message, line, and column.
 func CreateParsingError(message string, line, column int) ParsingError {
     return ParsingError{
         ExtodanError: ExtodanError{Message: message, Position: NewSourcePosition(line, column)},
     }
 }
 
-// CreateUnexpectedTokenError creates an UnexpectedTokenError instance with the provided message, token, line, and column.
+// CreateUnexpectedTokenError creates a new UnexpectedTokenError instance with the provided message, token, line, and column.
 func CreateUnexpectedTokenError(message, token string, line, column int) UnexpectedTokenError {
     return UnexpectedTokenError{
         ExtodanError: ExtodanError{Message: message, Position: NewSourcePosition(line, column)},
@@ -73,21 +71,21 @@ func CreateUnexpectedTokenError(message, token string, line, column int) Unexpec
     }
 }
 
-// CreateSyntaxError creates a SyntaxError instance with the provided message, line, and column.
+// CreateSyntaxError creates a new SyntaxError instance with the provided message, line, and column.
 func CreateSyntaxError(message string, line, column int) SyntaxError {
     return SyntaxError{
         ExtodanError: ExtodanError{Message: message, Position: NewSourcePosition(line, column)},
     }
 }
 
-// CreateSemanticError creates a SemanticError instance with the provided message, line, and column.
+// CreateSemanticError creates a new SemanticError instance with the provided message, line, and column.
 func CreateSemanticError(message string, line, column int) SemanticError {
     return SemanticError{
         ExtodanError: ExtodanError{Message: message, Position: NewSourcePosition(line, column)},
     }
 }
 
-// CreateIOValidationError creates an IOValidationError instance with the provided message, path, line, and column.
+// CreateIOValidationError creates a new IOValidationError instance with the provided message, path, line, and column.
 func CreateIOValidationError(message, path string, line, column int) IOValidationError {
     return IOValidationError{
         ExtodanError: ExtodanError{Message: message, Position: NewSourcePosition(line, column)},
