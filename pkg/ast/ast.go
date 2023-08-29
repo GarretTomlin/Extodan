@@ -3,7 +3,7 @@ package ast
 type NodeType string
 
 const (
-	NodeProgram              NodeType = "Program"
+	NodeProgram             NodeType = "Program"
 	NodeFunctionDeclaration NodeType = "FunctionDeclaration"
 	NodeParameter           NodeType = "Parameter"
 	NodeReturnStatement     NodeType = "ReturnStatement"
