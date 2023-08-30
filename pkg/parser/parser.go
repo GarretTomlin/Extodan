@@ -135,7 +135,62 @@ func (p *Parser) parsePrimaryExpression() ast.Node {
 
 
 
+func (p *Parser) ParseFunctionDeclaration() ast.Node {
+	if p.curToken.Type == lexer.TokenKeyword && p.curToken.Value == "func" {
+		p.advanceToken() // Consume "func" keyword
+		if p.curToken.Type == lexer.TokenIdentifier {
+			funcName := p.curToken.Value
+			p.advanceToken() // Consume function name
 
+			// Parse function parameters
+			parameters := p.ParseParameter()
+
+			// Parse function body
+			body := p.ParseFunctionBody()
+
+			// Parse function expressiona
+			expression := p.ParseExpression()
+
+			//parse Statement
+
+			statement := p.ParseStatement()
+
+			// Create the function declaration node
+			funcDeclNode := ast.NewNode(ast.NodeFunctionDeclaration, funcName)
+			funcDeclNode = ast.AddChild(funcDeclNode, parameters)
+			funcDeclNode = ast.AddChild(funcDeclNode, body)
+			funcDeclNode = ast.AddChild(funcDeclNode, expression)
+			funcDeclNode = ast.AddChild(funcDeclNode, statement)
+
+			return funcDeclNode
+		}
+	}
+
+	// Create a placeholder node for unsupported function declaration
+	return ast.NewNode(ast.NodeFunctionDeclaration, "UnsupportedFunction")
+}
+
+
+func (p *Parser) ParseFunctionBody() ast.Node {
+	if p.curToken.Type == lexer.TokenKeyword && p.curToken.Value == "do" {
+		p.advanceToken() // Consume "do" keyword
+
+		// Parse statements within the function body
+		functionBody := ast.NewNode(ast.NodeFunctionBody, "")
+		for p.curToken.Type != lexer.TokenKeyword || p.curToken.Value != "endfunc" {
+			statement := p.ParseStatement()
+			functionBody = ast.AddChild(functionBody, statement)
+		}
+
+		// Consume "endfunc" keyword
+		p.advanceToken()
+
+		return functionBody
+	}
+
+	// Create a placeholder node for unsupported function body
+	return ast.NewNode(ast.NodeFunctionBody, "UnsupportedFunctionBody")
+}
 
 // Parse the program using the provided lexer.
 func (p *Parser) Parse() ast.Node {

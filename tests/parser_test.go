@@ -39,6 +39,7 @@ func TestParser_ParseExpression(t *testing.T) {
 	sourceCode := "4 + 2"
 	l := lexer.NewLexer(sourceCode)
 	p := parser.NewParser(l)
+
 	expression := p.ParseExpression()
 
 	// Assert the result
@@ -71,4 +72,22 @@ func TestParser_ParseParameter(t *testing.T) {
 
 
 
+func TestParser_ParseFunctionDeclaration(t *testing.T) {
+	sourceCode := `
+		func add(a, b) do
+			return a + b
+		endfunc
+	`
+	sourceCode = strings.TrimSpace(sourceCode)
 
+	l := lexer.NewLexer(sourceCode)
+	p := parser.NewParser(l)
+
+	// Parse the first function declaration
+	funcDecl1 := p.ParseFunctionDeclaration()
+	assert.NotNil(t, funcDecl1)
+	assert.Equal(t, ast.NodeFunctionDeclaration, funcDecl1.Type)
+	assert.Equal(t, "add", funcDecl1.Value)
+
+
+}

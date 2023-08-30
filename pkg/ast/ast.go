@@ -10,11 +10,13 @@ const (
 	NodeParameter           NodeType = "Parameter"
 	NodeReturnStatement     NodeType = "ReturnStatement"
 	NodeExpression          NodeType = "Expression"
+	NodeFunctionBody NodeType="NodeFunctionBody"
 	NodeTerm                NodeType = "Term"
 	NodeOperator            NodeType = "Operator"
 	NodeIdentifier          NodeType = "Identifier"
 	NodeInteger             NodeType = "Integer"
 	NodeMissingExpression NodeType = "MissingExpression"
+
 
 
 )
@@ -45,7 +47,7 @@ func (n Node) Evaluate() int {
 		return value
 	case NodeExpression:
 		left := n.Children[0].Evaluate()
-		right := n.Children[1].Evaluate()
+		right := n.Children[2].Evaluate()
 		switch n.Value {
 		case "+":
 			return left + right
