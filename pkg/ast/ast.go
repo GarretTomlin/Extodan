@@ -16,6 +16,7 @@ const (
 	NodeInteger             NodeType = "Integer"
 	NodeMissingExpression NodeType = "MissingExpression"
 
+
 )
 
 type Node struct {
