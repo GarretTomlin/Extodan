@@ -11,9 +11,34 @@ import (
 	"extodan/pkg/ast"
 )
 
+func TestParser_ParseStatement(t *testing.T) {
+	sourceCode := `
+		return 42
+		return 10
+	`
+	sourceCode = strings.TrimSpace(sourceCode)
+
+	l := lexer.NewLexer(sourceCode)
+	p := parser.NewParser(l)
+	program := p.Parse()
+
+	assert.NotNil(t, program)
+	assert.Equal(t, ast.NodeProgram, program.Type)
+	assert.Len(t, program.Children, 2)
+
+	assert.Equal(t, ast.NodeReturnStatement, program.Children[0].Type)
+	assert.Equal(t, ast.NodeReturnStatement, program.Children[1].Type)
+
+	assert.Equal(t, ast.NodeInteger, program.Children[0].Children[0].Type)
+	assert.Equal(t, "42", program.Children[0].Children[0].Value)
+
+	assert.Equal(t, ast.NodeInteger, program.Children[1].Children[0].Type)
+	assert.Equal(t, "10", program.Children[1].Children[0].Value)
+}
+
 func TestParser_ParseFunctionDeclaration(t *testing.T) {
 	sourceCode := `
-		func multiple(a, b) do
+		func add(a, b) do
 			return a + b
 		endfunc
 	`
@@ -33,7 +58,7 @@ func TestParser_ParseFunctionDeclaration(t *testing.T) {
 	assert.Len(t, funcDeclNode.Children, 4) // Function name, parameters, function body
 
 	// Assert other details of the function declaration and its contents
-	assert.Equal(t, "multiple", funcDeclNode.Value) // Check the function name
+	assert.Equal(t, "add", funcDeclNode.Value) // Check the function name
 
 	// Check the parameters
 	assert.Len(t, funcDeclNode.Children[0].Children, 2)

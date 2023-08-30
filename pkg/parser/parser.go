@@ -48,7 +48,7 @@ func (p *Parser) parseFunctionDeclaration() ast.Node {
 		for p.curToken.Type == lexer.TokenIdentifier {
 			parameter := p.parseParameter()
 			parameters = append(parameters, parameter)
-			if p.curToken.Type == lexer.TokenOperator {
+			if p.curToken.Type == lexer.TokenPunctuation {
 				p.advanceToken() // Consume ','
 			} else {
 				break
@@ -70,7 +70,7 @@ func (p *Parser) parseFunctionDeclaration() ast.Node {
 
 		return funcDeclNode
 	}
-	return ast.NewNode(ast.NodeFunctionDeclaration, "UnsupportedParameter")
+	return ast.NewNode(ast.NodeFunctionDeclaration, "UnsupportedFunction")
 }
 
 func (p *Parser) parseParameter() ast.Node {
